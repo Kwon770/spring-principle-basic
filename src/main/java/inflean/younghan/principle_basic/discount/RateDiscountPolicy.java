@@ -2,7 +2,9 @@ package inflean.younghan.principle_basic.discount;
 
 import inflean.younghan.principle_basic.member.Grade;
 import inflean.younghan.principle_basic.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private int discountPercent = 10;
