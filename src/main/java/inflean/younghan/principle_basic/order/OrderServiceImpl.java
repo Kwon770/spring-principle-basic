@@ -1,9 +1,12 @@
 package inflean.younghan.principle_basic.order;
 
+import inflean.younghan.principle_basic.annotation.MainDiscountPolicy;
 import inflean.younghan.principle_basic.discount.DiscountPolicy;
 import inflean.younghan.principle_basic.member.Member;
 import inflean.younghan.principle_basic.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,7 +16,10 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPolicy discountPolicy;
 
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository,
+//                          @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+                            @MainDiscountPolicy DiscountPolicy discountPolicy) {
+//                            DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
